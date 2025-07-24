@@ -1,163 +1,110 @@
-# OpenCode Copy2 - AI Coding Agent
+<p align="center">
+  <a href="https://opencode.ai">
+    <picture>
+      <source srcset="packages/web/src/assets/logo-ornate-dark.svg" media="(prefers-color-scheme: dark)">
+      <source srcset="packages/web/src/assets/logo-ornate-light.svg" media="(prefers-color-scheme: light)">
+      <img src="packages/web/src/assets/logo-ornate-light.svg" alt="opencode logo">
+    </picture>
+  </a>
+</p>
+<p align="center">AI coding agent, built for the terminal.</p>
+<p align="center">
+  <a href="https://opencode.ai/discord"><img alt="Discord" src="https://img.shields.io/discord/1391832426048651334?style=flat-square&label=discord" /></a>
+  <a href="https://www.npmjs.com/package/opencode-ai"><img alt="npm" src="https://img.shields.io/npm/v/opencode-ai?style=flat-square" /></a>
+  <a href="https://github.com/sst/opencode/actions/workflows/publish.yml"><img alt="Build status" src="https://img.shields.io/github/actions/workflow/status/sst/opencode/publish.yml?style=flat-square&branch=dev" /></a>
+</p>
 
-**AI coding agent, built for the terminal.** A sophisticated monorepo containing multiple interfaces and deployment targets for an intelligent coding assistant.
-
-## 🎯 Core Technology Stack
-- **Runtime**: Bun (JavaScript/TypeScript)
-- **TUI**: Go (Terminal User Interface)  
-- **Web**: Astro (Static Site Generator)
-- **Infrastructure**: SST (Serverless Stack)
-- **API Generation**: Stainless
-
-## 🔧 Main Components
-1. **CLI Tool** (`packages/opencode/`) - Core AI coding agent
-2. **Terminal UI** (`packages/tui/`) - Go-based interactive interface  
-3. **Web Interface** (`packages/web/`) - Astro-based web app
-4. **Cloud Functions** (`packages/function/`) - Serverless backend
-5. **Platform Integrations** (`sdks/`) - GitHub Actions & VS Code extensions
-
-## 🧠 Core Agent Architecture
-**Core Logic:**
-- `provider/` - AI model integrations (OpenAI, Claude, etc.)
-- `session/` - Conversation context and agent state management
-- `tool/` - Executable functions (file editing, commands, etc.)
-- `mcp/` - Model Context Protocol implementation
-
-**Critical Support:**
-- `lsp/` - Language Server Protocol for code understanding
-- `app/` - Main orchestration and agent workflow
-- `file/` - Core file operations
-
-**Infrastructure:**
-- `cli/`, `server/` - User interfaces and API layer
-- `auth/`, `permission/` - Security and access control
-- `storage/`, `snapshot/` - Data persistence and versioning
-- `config/`, `global/` - Configuration management
-- `installation/`, `trace/`, `util/` - System utilities
-- `ide/` - Editor integrations
-- `format/` - Code formatting
-- `bus/` - Event system coordination
-
-## ⚡ Key Features
-- AI-powered terminal coding agent
-- Multi-language support (TypeScript, Go)
-- IDE integrations (VS Code)
-- GitHub Actions integration
-- Web interface for management
-- Serverless deployment ready
-
-## 📁 Complete Project Structure
-
-```
-opencode-copy2/
-├── 📁 Root Configuration
-│   ├── .editorconfig
-│   ├── .gitignore
-│   ├── bunfig.toml
-│   ├── tsconfig.json
-│   ├── opencode.json
-│   ├── package.json
-│   ├── bun.lock
-│   ├── sst.config.ts
-│   ├── sst-env.d.ts
-│   ├── stainless.yml
-│   └── stainless-workspace.json
-│
-├── 📁 Documentation
-│   ├── README.md
-│   ├── AGENTS.md
-│   ├── STATS.md
-│   └── LICENSE
-│
-├── 📁 Scripts & Installation
-│   ├── install (installation script)
-│   └── scripts/
-│       ├── hooks (bash)
-│       ├── hooks.bat (windows)
-│       ├── release
-│       ├── stainless
-│       └── stats.ts
-│
-├── 📁 GitHub Workflows (.github/)
-│   └── workflows/
-│       ├── deploy.yml
-│       ├── notify-discord.yml
-│       ├── opencode.yml
-│       ├── publish-github-action.yml
-│       ├── publish-vscode.yml
-│       ├── publish.yml
-│       └── stats.yml
-│
-├── 📁 Infrastructure (infra/)
-│   └── app.ts (SST deployment config)
-│
-├── 📁 Core Packages (packages/)
-│   ├── 📦 opencode/ (Main CLI package - TypeScript/Bun)
-│   │   ├── package.json
-│   │   ├── bin/ (CLI executables)
-│   │   ├── script/ (build scripts)
-│   │   ├── test/ (test files)
-│   │   └── src/ (Core source code)
-│   │       ├── index.ts (main entry)
-│   │       ├── app/ (application logic)
-│   │       ├── auth/ (authentication)
-│   │       ├── bun/ (Bun runtime integration)
-│   │       ├── bus/ (event bus)
-│   │       ├── cli/ (CLI interface)
-│   │       ├── config/ (configuration)
-│   │       ├── file/ (file operations)
-│   │       ├── flag/ (feature flags)
-│   │       ├── format/ (code formatting)
-│   │       ├── global/ (global state)
-│   │       ├── id/ (ID generation)
-│   │       ├── ide/ (IDE integration)
-│   │       ├── installation/ (install logic)
-│   │       ├── lsp/ (Language Server Protocol)
-│   │       ├── mcp/ (Model Context Protocol)
-│   │       ├── permission/ (permissions)
-│   │       ├── provider/ (AI providers)
-│   │       ├── server/ (server logic)
-│   │       ├── session/ (session management)
-│   │       ├── share/ (sharing functionality)
-│   │       ├── snapshot/ (code snapshots)
-│   │       ├── storage/ (data storage)
-│   │       ├── tool/ (tools integration)
-│   │       ├── trace/ (tracing/logging)
-│   │       └── util/ (utilities)
-│   │
-│   ├── 📦 tui/ (Terminal UI - Go)
-│   │   ├── go.mod, go.sum
-│   │   ├── .goreleaser.yml
-│   │   ├── cmd/ (command definitions)
-│   │   ├── input/ (input handling)
-│   │   ├── internal/ (internal packages)
-│   │   └── sdk/ (SDK integration)
-│   │
-│   ├── 📦 web/ (Web interface - Astro)
-│   │   ├── package.json
-│   │   ├── astro.config.mjs
-│   │   ├── config.mjs
-│   │   ├── public/ (static assets)
-│   │   └── src/ (web source code)
-│   │
-│   ├── 📦 function/ (Serverless functions)
-│   │   ├── package.json
-│   │   └── src/ (function source)
-│   │
-│   └── 📦 sdk/ (Software Development Kit)
-│       └── (SDK code)
-│
-└── 📁 Platform SDKs (sdks/)
-    ├── 📦 github/ (GitHub Action/Integration)
-    │   ├── action.yml
-    │   ├── package.json
-    │   ├── script/ (build scripts)
-    │   └── src/ (GitHub integration code)
-    │
-    └── 📦 vscode/ (VS Code Extension)
-        └── (extension code)
-```
+[![opencode Terminal UI](packages/web/src/assets/lander/screenshot.png)](https://opencode.ai)
 
 ---
 
-*This is a fork of the OpenCode AI terminal coding agent project.*
+### Installation
+
+```bash
+# YOLO
+curl -fsSL https://opencode.ai/install | bash
+
+# Package managers
+npm i -g opencode-ai@latest        # or bun/pnpm/yarn
+brew install sst/tap/opencode      # macOS
+paru -S opencode-bin               # Arch Linux
+```
+
+> [!TIP]
+> Remove versions older than 0.1.x before installing.
+
+#### Installation Directory
+
+The install script respects the following priority order for the installation path:
+
+1. `$OPENCODE_INSTALL_DIR` - Custom installation directory
+2. `$XDG_BIN_DIR` - XDG Base Directory Specification compliant path
+3. `$HOME/bin` - Standard user binary directory (if exists or can be created)
+4. `$HOME/.opencode/bin` - Default fallback
+
+```bash
+# Examples
+OPENCODE_INSTALL_DIR=/usr/local/bin curl -fsSL https://opencode.ai/install | bash
+XDG_BIN_DIR=$HOME/.local/bin curl -fsSL https://opencode.ai/install | bash
+```
+
+### Documentation
+
+For more info on how to configure opencode [**head over to our docs**](https://opencode.ai/docs).
+
+### Contributing
+
+opencode is an opinionated tool so any fundamental feature needs to go through a
+design process with the core team.
+
+> [!IMPORTANT]
+> We do not accept PRs for core features.
+
+However we still merge a ton of PRs - you can contribute:
+
+- Bug fixes
+- Improvements to LLM performance
+- Support for new providers
+- Fixes for env specific quirks
+- Missing standard behavior
+- Documentation
+
+Take a look at the git history to see what kind of PRs we end up merging.
+
+> [!NOTE]
+> If you do not follow the above guidelines we might close your PR.
+
+To run opencode locally you need.
+
+- Bun
+- Golang 1.24.x
+
+And run.
+
+```bash
+$ bun install
+$ bun run packages/opencode/src/index.ts
+```
+
+#### Development Notes
+
+**API Client**: After making changes to the TypeScript API endpoints in `packages/opencode/src/server/server.ts`, you will need the opencode team to generate a new stainless sdk for the clients.
+
+### FAQ
+
+#### How is this different than Claude Code?
+
+It's very similar to Claude Code in terms of capability. Here are the key differences:
+
+- 100% open source
+- Not coupled to any provider. Although Anthropic is recommended, opencode can be used with OpenAI, Google or even local models. As models evolve the gaps between them will close and pricing will drop so being provider agnostic is important.
+- A focus on TUI. opencode is built by neovim users and the creators of [terminal.shop](https://terminal.shop); we are going to push the limits of what's possible in the terminal.
+- A client/server architecture. This for example can allow opencode to run on your computer, while you can drive it remotely from a mobile app. Meaning that the TUI frontend is just one of the possible clients.
+
+#### What's the other repo?
+
+The other confusingly named repo has no relation to this one. You can [read the story behind it here](https://x.com/thdxr/status/1933561254481666466).
+
+---
+
+**Join our community** [Discord](https://discord.gg/opencode) | [YouTube](https://www.youtube.com/c/sst-dev) | [X.com](https://x.com/SST_dev)
