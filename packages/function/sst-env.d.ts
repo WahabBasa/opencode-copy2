@@ -14,13 +14,13 @@ declare module "sst" {
       "type": "sst.sst.Linkable"
       "value": string
     }
-    "DATABASE_PASSWORD": {
+    "BASETEN_API_KEY": {
       "type": "sst.sst.Secret"
       "value": string
     }
-    "DATABASE_USERNAME": {
-      "type": "sst.sst.Secret"
-      "value": string
+    "Console": {
+      "type": "sst.cloudflare.SolidStart"
+      "url": string
     }
     "Database": {
       "database": string
@@ -50,7 +50,7 @@ declare module "sst" {
       "type": "sst.sst.Secret"
       "value": string
     }
-    "OPENAI_API_KEY": {
+    "HONEYCOMB_API_KEY": {
       "type": "sst.sst.Secret"
       "value": string
     }
@@ -66,7 +66,7 @@ declare module "sst" {
       "type": "sst.cloudflare.Astro"
       "url": string
     }
-    "ZHIPU_API_KEY": {
+    "XAI_API_KEY": {
       "type": "sst.sst.Secret"
       "value": string
     }
@@ -80,7 +80,7 @@ declare module "sst" {
     "AuthApi": cloudflare.Service
     "AuthStorage": cloudflare.KVNamespace
     "Bucket": cloudflare.R2Bucket
-    "GatewayApi": cloudflare.Service
+    "LogProcessor": cloudflare.Service
   }
 }
 
